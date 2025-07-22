@@ -1,0 +1,31 @@
+# === Node Modules ===
+client/node_modules/
+server/node_modules/
+
+# === Build Outputs ===
+client/build/
+client/dist/
+server/dist/
+
+# === Environment Variables ===
+client/.env
+server/.env
+
+# === Logs ===
+*.log
+npm-debug.log*
+
+# === OS and Editor Files ===
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# === Coverage ===
+coverage/
+
+# === Misc ===
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
