@@ -5,23 +5,6 @@
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
 ![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
-
-A comprehensive full-stack job portal built with the MERN stack (MongoDB, Express, React, Node.js). This application features role-based authentication for recruiters and job seekers, allowing recruiters to post and manage jobs, and job seekers to manage their profiles, upload resumes, and more.
-
----
-
-## ✨ Key Features
-
--   **Role-Based Authentication**: Separate login and dashboard experiences for Recruiters and Job Seekers.
--   **JWT Security**: Secure user sessions and protected API routes using JSON Web Tokens.
--   **Full Job Management (CRUD)**: Recruiters can Create, Read, Update, and Delete their job postings.
--   **Dynamic Filtering**: Public job board with real-time filtering by job title, location, and category.
--   **Centralized State Management**: Robust and predictable state management using Redux Toolkit.
--   **Full Profile Management**: Users can update their name, email, and profile picture.
--   **Cloud-Based File Uploads**: Job seekers can upload and manage their PDF resumes, with file storage handled by Cloudinary.
-
----
-
 ## 📸 Application Screenshots
 
 ### 1. Home Page & Job Filtering
