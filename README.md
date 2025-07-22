@@ -6,7 +6,7 @@
 ![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
 
-A comprehensive full-stack job portal built with the MERN stack (MongoDB, Express, React, Node.js). This application features role-based authentication for recruiters and job seekers, allowing recruiters to post and manage jobs, and job seekers to manage their profiles, upload resumes, and (in future versions) apply for jobs.
+A comprehensive full-stack job portal built with the MERN stack (MongoDB, Express, React, Node.js). This application features role-based authentication for recruiters and job seekers, allowing recruiters to post and manage jobs, and job seekers to manage their profiles, upload resumes, and more.
 
 ---
 
@@ -14,23 +14,49 @@ A comprehensive full-stack job portal built with the MERN stack (MongoDB, Expres
 
 -   **Role-Based Authentication**: Separate login and dashboard experiences for Recruiters and Job Seekers.
 -   **JWT Security**: Secure user sessions and protected API routes using JSON Web Tokens.
--   **CRUD for Jobs**: Recruiters can Create, Read, Update, and Delete their job postings.
--   **Dynamic Filtering**: Public job board with dynamic filtering by job title and location.
+-   **Full Job Management (CRUD)**: Recruiters can Create, Read, Update, and Delete their job postings.
+-   **Dynamic Filtering**: Public job board with real-time filtering by job title, location, and category.
 -   **Centralized State Management**: Robust and predictable state management using Redux Toolkit.
--   **Profile Management**: Users can update their name, email, and profile picture.
--   **Resume Upload**: Job seekers can upload and manage their PDF resumes, with file storage handled by Cloudinary.
+-   **Full Profile Management**: Users can update their name, email, and profile picture.
+-   **Cloud-Based File Uploads**: Job seekers can upload and manage their PDF resumes, with file storage handled by Cloudinary.
 
 ---
 
 ## 📸 Application Screenshots
 
-| Home Page & Job Listings                               | Recruiter Dashboard                                  |
-| ------------------------------------------------------ | ---------------------------------------------------- |
-| ![Home Page](./assets/Screenshot 2025-07-22 163036.png) | ![Recruiter Dashboard](./assets/Screenshot%202025-07-22%20163218.png) |
+### 1. Home Page & Job Filtering
+The public-facing landing page where anyone can view and filter the latest job listings.
 
-| Job Seeker Dashboard                                        | Edit Job Page (Recruiter)                                    |
-| ----------------------------------------------------------- | ------------------------------------------------------------ |
-| ![Job Seeker Dashboard](./assets/Screenshot%202025-07-22%20163441.png) | ![Edit Job Page](./assets/Screenshot%202025-07-22%20163520.png) |
+| Landing Page                                   | Dynamic Filtering in Action                              |
+| ---------------------------------------------- | -------------------------------------------------------- |
+| ![Home Page](./assets/Screenshot%202025-07-22%20163036.png) | ![Filter Functionality](./assets/Screenshot%202025-07-22%20163122.png) |
+
+---
+
+### 2. Recruiter Experience
+From login to a feature-rich dashboard, recruiters have all the tools they need to manage job postings.
+
+| Recruiter Login Page                                 | Recruiter Dashboard & Job Management                       |
+| ---------------------------------------------------- | ---------------------------------------------------------- |
+| ![Recruiter Login](./assets/Screenshot%202025-07-22%20163152.png) | ![Recruiter Dashboard](./assets/Screenshot%202025-07-22%20163218.png) |
+
+---
+
+### 3. Job Seeker Experience
+A personalized dashboard for job seekers to manage their professional profile and resume.
+
+| Job Seeker Login Page                                  | Job Seeker Dashboard & Resume Management                 |
+| ------------------------------------------------------ | -------------------------------------------------------- |
+| ![Job Seeker Login](./assets/Screenshot%202025-07-22%20163422.png) | ![Job Seeker Dashboard](./assets/Screenshot%202025-07-22%20163441.png) |
+
+---
+
+### 4. Profile & Content Management
+Dedicated pages for users to edit their jobs and personal information, accessible to both roles.
+
+| Job Editing Page (Recruiter)                             | Universal Profile Update Page                          |
+| -------------------------------------------------------- | -------------------------------------------------------- |
+| ![Edit Job Page](./assets/Screenshot%202025-07-22%20163520.png) | ![Update Profile Page](./assets/Screenshot%202025-07-22%20163557.png) |
 
 
 ---
@@ -98,4 +124,5 @@ Follow these instructions to get a copy of the project up and running on your lo
     # Start the React development server
     npm start
     ```
-    The frontend will open and run on `http://localhost:5173` (or another port if 3000 is busy).
+    The frontend will open and run on `http://localhost:5173` (or another port if 3000/5173 is busy).
+    
