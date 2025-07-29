@@ -8,9 +8,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // --- CHANGE IS HERE ---
-  // We get the 'user' and 'token' from the auth state.
-  // The presence of a 'token' is our source of truth for authentication.
+ 
   const { user, token } = useSelector((state) => state.auth);
 
   const handleLogout = () => {

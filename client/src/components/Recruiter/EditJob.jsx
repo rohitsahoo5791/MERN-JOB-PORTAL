@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { Container, Form, Button, Spinner, Alert } from 'react-bootstrap';
+import { Container, Form, Button, Spinner, Alert,Row,Col } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 
-// 1. Import the new Redux actions
+
 import { fetchJobById, updateJob, clearCurrentJob } from '../../redux/slice/jobSlice';
 
 const EditJob = () => {
@@ -12,25 +12,25 @@ const EditJob = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // 2. Get the relevant state from the Redux store
+ 
   const { currentJob, currentJobStatus, error } = useSelector((state) => state.jobs);
   
-  // 3. Keep local state for the form itself
+  
   const [formData, setFormData] = useState({
     title: '', description: '', location: '', salary: '', category: ''
   });
 
-  // 4. Fetch the job data when the component mounts
+ 
   useEffect(() => {
     dispatch(fetchJobById(jobId));
 
-    // 5. Cleanup: When the component unmounts, clear the 'currentJob' from the store
+    
     return () => {
       dispatch(clearCurrentJob());
     };
   }, [jobId, dispatch]);
 
-  // 6. Sync the Redux state to the local form state when data arrives
+  
   useEffect(() => {
     if (currentJob) {
       setFormData({
@@ -51,7 +51,7 @@ const EditJob = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // 7. Dispatch the updateJob action
+     
       await dispatch(updateJob({ jobId, jobData: formData })).unwrap();
       toast.success('Job updated successfully!');
       navigate('/recruiter-dashboard');
@@ -60,7 +60,7 @@ const EditJob = () => {
     }
   };
   
-  // 8. Render UI based on the Redux status
+  
   if (currentJobStatus === 'loading' && !currentJob) { // Show full-page spinner only on initial load
     return (
       <Container className="text-center mt-5">

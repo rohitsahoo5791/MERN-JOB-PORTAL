@@ -4,22 +4,22 @@ import { Container, Row, Col, Card, Button, Badge, Spinner, Alert, Form } from '
 import { useSelector, useDispatch } from 'react-redux';
 import toast from 'react-hot-toast';
 
-// Import the necessary actions from our slices
+
 import { logout, uploadResume } from '../../redux/slice/authSlice';
 
 const JobseekerDashboard = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    // Read all necessary data directly from the Redux store
+    
     const { user, token, status, error: authError } = useSelector((state) => state.auth);
 
-    // Keep local state ONLY for UI interactions (the file input)
+   
     const [resumeFile, setResumeFile] = useState(null);
     const [localError, setLocalError] = useState(''); // For file type validation
     const resumeInputRef = useRef(null);
 
-    // This useEffect now only handles authorization, not data fetching
+
     useEffect(() => {
         if (!token) {
             navigate('/login');
@@ -86,7 +86,7 @@ const JobseekerDashboard = () => {
         <div className="bg-light py-5">
             <Container>
                 <Row>
-                    {/* === Left Column: User Profile Sidebar (COMPLETE) === */}
+                
                     <Col md={4}>
                        <Card className="border-0 shadow-sm mb-4">
                             <Card.Body className="text-center">
@@ -120,7 +120,6 @@ const JobseekerDashboard = () => {
                         </Card>
                     </Col>
 
-                    {/* === Right Column: Resume Management (COMPLETE) === */}
                     <Col md={8}>
                         <h2>My Resume</h2>
                         <Card className="border-0 shadow-sm">

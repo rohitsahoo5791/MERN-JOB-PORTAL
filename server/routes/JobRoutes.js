@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-// 1. Import all necessary controllers and middleware ONCE at the top.
+
 const {
   getAllJobs,
   createJob,
   getMyJobs,
   updateJob,
+  getSingleJob,
   deleteJob,
 } = require('../controllers/jobController');
 
@@ -14,16 +15,11 @@ const verifyToken = require('../middleware/authMiddleware');
 const restrictTo = require('../middleware/restrictTo');
 
 
-// --- Public Routes ---
 
-// GET /api/jobs/all - This is the main route for fetching all jobs.
-// It uses our new 'getAllJobs' controller which includes recruiter info.
 router.get('/all', getAllJobs);
 
 
-// --- Protected Recruiter Routes (all require a valid token and 'recruiter' role) ---
 
-// GET /api/jobs/my-jobs - Get jobs posted by the logged-in recruiter.
 router.get(
     '/my-jobs',
     verifyToken,
@@ -31,7 +27,7 @@ router.get(
     getMyJobs
 );
 
-// POST /api/jobs - Create a new job posting.
+
 router.post(
     '/', // This maps to POST /api/jobs
     verifyToken,
@@ -39,7 +35,7 @@ router.post(
     createJob
 );
 
-// PUT /api/jobs/edit/:jobId - Update a specific job posting.
+
 router.put(
     '/edit/:jobId',
     verifyToken,
@@ -47,7 +43,22 @@ router.put(
     updateJob
 );
 
-// DELETE /api/jobs/delete/:jobId - Delete a specific job posting.
+// router.get(
+//   '/edit/:jobId',
+//   verifyToken,
+//   restrictTo('recruiter'),
+//   getSingleJob
+// );
+
+router.get('/edit/:jobId', verifyToken, (req, res) => {
+  res.json({
+    message: 'Token verified!',
+    user: req.user,
+  });
+  getSingleJob
+});
+
+
 router.delete(
     '/delete/:jobId',
     verifyToken,

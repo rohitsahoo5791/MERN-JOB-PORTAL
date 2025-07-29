@@ -1,11 +1,25 @@
 const Job = require('../models/Jobs.js');
 
-/**
- * @desc    Get all jobs, with optional filtering by category/location.
- *          This also populates recruiter info for the job cards.
- * @route   GET /api/jobs/all
- * @access  Public
- */
+const getSingleJob = async (req, res) => {
+  try {
+    const job = await Job.findById(req.params.jobId);
+
+    if (!job) {
+      return res.status(404).json({ message: 'Job not found' });
+    }
+
+    if (!job.recruiter || job.recruiter.toString() !== req.user.id) {
+      return res.status(403).json({ message: 'Unauthorized access' });
+    }
+
+    res.status(200).json(job);
+  } catch (error) {
+    console.error('Error fetching job:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+
 const getAllJobs = async (req, res) => {
   try {
     const { category, location } = req.query;
@@ -14,7 +28,7 @@ const getAllJobs = async (req, res) => {
     if (category) filter.category = { $regex: new RegExp(category, 'i') };
     if (location) filter.location = { $regex: new RegExp(location, 'i') };
 
-    // FIX: Populate recruiter info here so the job cards have company details
+   
     const jobs = await Job.find(filter)
       .populate({
         path: 'companyId',
@@ -30,11 +44,7 @@ const getAllJobs = async (req, res) => {
   }
 };
 
-/**
- * @desc    Create a new job posting
- * @route   POST /api/jobs
- * @access  Private (Recruiter only)
- */
+
 const createJob = async (req, res) => {
   try {
     const { title, description, location, category, salary } = req.body;
@@ -46,10 +56,10 @@ const createJob = async (req, res) => {
       location,
       category,
       salary,
-      companyId: req.user.id, // Comes from your auth middleware
+      companyId: req.user.id, 
     });
 
-    // FIX: Populate the new job with company info before sending it back
+   
     const job = await Job.findById(newJob._id).populate({
       path: 'companyId',
       select: 'name email profilePic role',
@@ -64,11 +74,7 @@ const createJob = async (req, res) => {
   }
 };
 
-/**
- * @desc    Get all jobs posted by the logged-in recruiter
- * @route   GET /api/jobs/my-jobs
- * @access  Private (Recruiter only)
- */
+
 const getMyJobs = async (req, res) => {
   try {
     // A role check in the route's middleware is cleaner, but this also works.
@@ -87,11 +93,7 @@ const getMyJobs = async (req, res) => {
   }
 };
 
-/**
- * @desc    Update a job posting
- * @route   PUT /api/jobs/edit/:jobId
- * @access  Private (Recruiter only)
- */
+
 const updateJob = async (req, res) => {
   const { jobId } = req.params;
   const recruiterId = req.user.id;
@@ -125,11 +127,7 @@ const updateJob = async (req, res) => {
   }
 };
 
-/**
- * @desc    Delete a job posting
- * @route   DELETE /api/jobs/delete/:jobId
- * @access  Private (Recruiter only)
- */
+
 const deleteJob = async (req, res) => {
   const { jobId } = req.params;
   const recruiterId = req.user.id;
@@ -156,9 +154,7 @@ const deleteJob = async (req, res) => {
 };
 
 
-// Note: getJobs was merged into getAllJobs with the populate fix.
-// Note: getAllJobsWithRecruiters is now the default behavior of getAllJobs.
-// Note: There was a duplicate updateJob in the original module.exports.
+
 
 module.exports = {
   getAllJobs,
@@ -166,4 +162,6 @@ module.exports = {
   getMyJobs,
   updateJob,
   deleteJob,
+  getSingleJob
+
 };

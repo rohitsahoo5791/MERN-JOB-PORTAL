@@ -33,10 +33,10 @@ const UpdateProfilePic = () => {
     formData.append("profilePic", file);
 
     try {
-      // 2. Dispatch the async thunk with the form data
+    
       await dispatch(updateProfilePicture(formData)).unwrap();
       toast.success('Profile picture updated successfully!');
-      // Reset preview after successful upload
+  
       setFile(null);
       setPreview(null);
     } catch (err) {

@@ -4,18 +4,18 @@ import axios from 'axios';
 
 // Axios instance with base config
 const API = axios.create({
-  baseURL: 'http://localhost:5000/api', // ✅ your Express backend URL
+  baseURL: 'http://localhost:5000/api', 
 //   withCredentials: true, // if you later use cookies
 });
 
-// Optional: attach JWT if stored in localStorage
+
 API.interceptors.request.use((req) => {
   const token = localStorage.getItem('token');
   if (token) req.headers.Authorization = `Bearer ${token}`;
   return req;
 });
 
-// ✅ LOGIN FUNCTION
+
 export const loginUser = async (email, password, role) => {
   try {
     const { data } = await API.post('/auth/login', { email, password, role });
@@ -27,7 +27,7 @@ export const loginUser = async (email, password, role) => {
 };
 
 
-// Add this to your api.js file
+
 export const fetchAllJobs = async () => {
   try {
     const { data } = await API.get('/jobs/all'); // or '/jobs' based on your backend setup
@@ -55,7 +55,7 @@ export const deleteJob = async (id) => {
 export const createJob = async (jobData) => {
   const token = localStorage.getItem('token');
   const res = await axios.post('http://localhost:5000/api/jobs/jobs', jobData, {
-    headers: { Authorization: `Bearer ${token}` } // ✅ fix
+    headers: { Authorization: `Bearer ${token}` } 
   });
   return res.data;
 };

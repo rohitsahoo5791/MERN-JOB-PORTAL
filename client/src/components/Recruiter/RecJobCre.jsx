@@ -4,14 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Container, Form, Button, Spinner, Alert, Row, Col } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 
-// 1. Import the new createJob async thunk
+
 import { createJob } from '../../redux/slice/jobSlice';
 
 const RecruiterCreateJob = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // 2. Get status and error from the store for UI feedback
+  
   const { currentJobStatus, error } = useSelector((state) => state.jobs);
 
   const [formData, setFormData] = useState({
@@ -29,7 +29,7 @@ const RecruiterCreateJob = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // 3. Dispatch the createJob action with the form data
+      
       await dispatch(createJob(formData)).unwrap();
       toast.success('Job posted successfully!');
       navigate('/recruiter-dashboard');

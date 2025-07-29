@@ -34,7 +34,9 @@ export const fetchJobById = createAsyncThunk(
     try {
       const { token } = getState().auth;
       const config = { headers: { Authorization: `Bearer ${token}` } };
+      console.log("hello")
       const response = await axios.get(`http://localhost:5000/api/jobs/edit/${jobId}`, config);
+      console.log(response)
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || 'Failed to fetch job details');

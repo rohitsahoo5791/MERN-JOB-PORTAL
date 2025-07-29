@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { Container, Row, Col, Form, InputGroup, FormControl, Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-// 1. Import the NEW action from the jobSlice
+
 import { setFilters } from '../redux/slice/jobSlice';
 import { assets } from '../assets/assets';
 
@@ -10,11 +10,11 @@ const Hero = () => {
   const locationRef = useRef(null);
   const dispatch = useDispatch();
 
-  // 2. Handle form submission to prevent page reload and dispatch the action
+ 
   const handleSearch = (e) => {
     e.preventDefault(); // Prevents the form from reloading the page
     
-    // 3. Dispatch the setFilters action with the values from the inputs
+    
     dispatch(setFilters({
       title: titleRef.current.value,
       location: locationRef.current.value,

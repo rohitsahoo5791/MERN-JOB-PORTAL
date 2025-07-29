@@ -3,19 +3,19 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Container, Form, Button, Spinner, Alert, Row, Col } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 
-// 1. Import the new async thunk
+
 import { updateUserProfile } from '../../redux/slice/authSlice';
 
 const RecruiterEditProfile = () => {
   const dispatch = useDispatch();
 
-  // 2. Get the full auth state
+
   const { user, status, error } = useSelector((state) => state.auth);
 
-  // 3. Use local state for the form, initialized from Redux state
+
   const [formData, setFormData] = useState({ name: '', email: '' });
 
-  // Pre-fill the form with user data when the component loads
+
   useEffect(() => {
     if (user) {
       setFormData({
@@ -37,7 +37,7 @@ const RecruiterEditProfile = () => {
     }
 
     try {
-      // 4. Dispatch the async thunk with the form data
+      
       await dispatch(updateUserProfile(formData)).unwrap();
       toast.success('Profile updated successfully!');
     } catch (err) {
