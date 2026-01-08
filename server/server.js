@@ -39,6 +39,11 @@ const adminRouter = require('./routes/adminRoutes.js'); // Adjust path
 // Add this line
 app.use('/api/admin', adminRouter);
 
+// Swagger UI - keep minimal and non-intrusive
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./swagger');
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 // ✅ Static files (images, resumes, etc)
 app.use('/uploads', express.static('uploads'));
 

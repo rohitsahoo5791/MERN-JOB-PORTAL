@@ -1,0 +1,82 @@
+Project: MERN Job Portal (Full Stack Test)
+
+Short Description:
+A MERN-stack job portal with role-based authentication for Recruiters and Job Seekers. Recruiters can post/manage jobs; job seekers can create profiles and upload resumes. Backend is Node/Express with MongoDB; frontend is React + Redux Toolkit.
+
+Repo layout (important folders/files):
+- server/: Express backend
+  - server.js: main server entry (mounts routes and Swagger UI at /api-docs)
+  - routes/: route definitions (JobRoutes.js, authRoutes.js, applicationRoutes.js, adminRoutes.js)
+  - controllers/: controllers implementing route logic
+  - models/: Mongoose models (User, Jobs, Application)
+  - middleware/: authentication, file upload and authorization middlewares
+  - uploads/: static uploads folder (profiles, resumes)
+  - swagger.js: Swagger JSDoc config (OpenAPI 3) generated for API docs
+  - package.json: server dependencies and scripts
+- client/: React frontend
+  - src/: React components, pages, redux slices, services
+  - package.json: client dependencies and scripts
+- README.md: existing project README with setup and screenshots
+
+Tech stack:
+- Frontend: React, Redux Toolkit, Vite, React Router
+- Backend: Node.js, Express, MongoDB (Mongoose)
+- Auth: JWT, bcrypt
+- File uploads: Multer + Cloudinary
+- API docs: swagger-jsdoc + swagger-ui-express (mounted at /api-docs)
+
+Environment variables (for server/.env):
+- PORT (default 5000)
+- MONGO_URL (MongoDB connection string)
+- JWT_SECRET
+- JWT_EXPIRES_IN
+- CLOUDINARY_CLOUD_NAME
+- CLOUDINARY_API_KEY
+- CLOUDINARY_API_SECRET
+
+How to run (local dev):
+1) Backend
+   cd server
+   npm install
+   Create .env with the variables above
+   npm run dev
+   Server available at http://localhost:5000
+   Swagger UI: http://localhost:5000/api-docs
+
+2) Frontend
+   cd client
+   npm install
+   npm run dev
+   Frontend available at http://localhost:5173 (or as indicated by Vite)
+
+API base mounts (examples):
+- Jobs: /api/jobs
+  - GET /api/jobs/all
+  - POST /api/jobs
+  - PUT /api/jobs/edit/:jobId
+  - GET /api/jobs/edit/:jobId
+  - DELETE /api/jobs/delete/:jobId
+- Auth: /api/auth
+  - POST /api/auth/register
+  - POST /api/auth/login
+  - POST /api/auth/logout
+  - GET /api/auth/me
+  - PUT /api/auth/update-profile
+  - PUT /api/auth/upload-resume
+  - PUT /api/auth/update-info
+- Applications: /api/application
+  - POST /api/application/apply/:jobId
+  - GET /api/application/job-details/:jobId
+  - GET /api/application/my-applications
+- Admin (admin-protected): /api/admin
+  - Admin routes for user/job/application management
+
+Notes & next steps:
+- The project now includes Swagger/OpenAPI JSDoc comments for routes; check /api-docs after installing server deps.
+- Consider adding `components.schemas` to the Swagger config for richer model definitions.
+- For production, set the Swagger server URL from an env variable and secure access to /api-docs if needed.
+
+Contact:
+- Project owner: local workspace; open files under client/src and server/ to locate more details.
+
+Generated on: 2026-01-08
