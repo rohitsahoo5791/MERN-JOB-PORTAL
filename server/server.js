@@ -20,6 +20,25 @@ app.use('/api/jobs', jobRoutes); // use only this for job routes
 const authRoutes = require('./routes/authRoutes');
 app.use('/api/auth', authRoutes); // use this for auth
 
+
+// In your main backend server file (e.g., app.js)
+const applicationRouter = require('./routes/applicationRoutes.js');
+
+// ... other app.use() statements
+app.use('/api/application', applicationRouter);
+
+
+
+// backend/app.js (or server.js)
+
+// ... other imports
+const adminRouter = require('./routes/adminRoutes.js'); // Adjust path
+
+// ... app.use for other routers
+
+// Add this line
+app.use('/api/admin', adminRouter);
+
 // ✅ Static files (images, resumes, etc)
 app.use('/uploads', express.static('uploads'));
 

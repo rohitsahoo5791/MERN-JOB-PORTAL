@@ -4,7 +4,12 @@ const userSchema = new mongoose.Schema({
   name: String,
   email: String,
   password: String,
-  role: String,
+  role: {
+    type: String,
+    // Add 'Admin' here
+    enum: ['jobseeker', 'recruiter', 'Admin'], 
+    required: true,
+  },
 profilePic: {
   type: String,
   default: 'https://cdn-icons-png.flaticon.com/512/149/149071.png',

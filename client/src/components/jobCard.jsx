@@ -7,24 +7,26 @@ import { useSelector } from 'react-redux';
 const JobCard = ({ job }) => {
   const navigate = useNavigate();
 
- 
+  // Get user's authentication token from the Redux store
   const { token } = useSelector((state) => state.auth);
 
-  const handleViewJobClick = () => {
-   
+  /**
+   * Navigates to the detailed job page if the user is logged in.
+   * Otherwise, it shows an error toast and redirects to the login page.
+   */
+  const handleViewDetailsClick = () => {
     if (!token) {
-      toast.error('Please login to view or apply to this job.');
+      toast.error('Please login to view job details.');
       navigate('/login');
     } else {
-     
-      toast.success('✅ Apply feature coming soon!');
+      // Navigate to the dynamic route for the specific job, e.g., /job/12345
+      navigate(`/job/${job._id}`); 
     }
   };
 
   const defaultAvatar = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
 
   return (
-   
     <Card className="mb-4 shadow-sm">
       <Card.Header className="bg-white d-flex justify-content-between align-items-center">
         <div>
@@ -51,14 +53,15 @@ const JobCard = ({ job }) => {
           {job.description?.slice(0, 150)}...
         </Card.Text>
 
-        <Button variant="primary" className="mt-2" onClick={handleViewJobClick}>
-          View Job
+        {/* --- This is the key change: The button now navigates --- */}
+        <Button variant="primary" className="mt-2" onClick={handleViewDetailsClick}>
+          View Details
         </Button>
       </Card.Body>
 
       <Card.Footer className="text-muted small bg-light">
-        <strong>Location:</strong> {job.location} |
-        <strong>Category:</strong> {job.category} |
+        <strong>Location:</strong> {job.location} |{' '}
+        <strong>Category:</strong> {job.category} |{' '}
         <strong>Salary:</strong> ₹{job.salary?.toLocaleString?.()}
       </Card.Footer>
     </Card>
