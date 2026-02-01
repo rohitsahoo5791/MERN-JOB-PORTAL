@@ -1,4 +1,4 @@
-.custom-navbar {
+.navbar-header {
   background: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -12,14 +12,19 @@
   z-index: 1000;
 }
 
-.logo a {
+.navbar-brand {
   font-size: 1.5rem;
   font-weight: bold;
   color: #333;
   text-decoration: none;
+  transition: opacity 0.3s ease;
 }
 
-.nav-links {
+.navbar-brand:hover {
+  opacity: 0.8;
+}
+
+.navbar-menu {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -28,20 +33,21 @@
   gap: 1.5rem;
 }
 
-.nav-links a {
+.navbar-menu a {
   text-decoration: none;
   color: #333;
   font-weight: 500;
-  padding: 0.5rem;
+  padding: 0.5rem 0.75rem;
   transition: all 0.3s ease;
   border-radius: 5px;
 }
 
-.nav-links a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+.navbar-menu a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #333;
 }
 
-.nav-links button {
+.nav-logout-btn {
   background-color: #1a73e8;
   color: white;
   border: none;
@@ -52,6 +58,6 @@
   transition: background-color 0.3s ease;
 }
 
-.nav-links button:hover {
+.nav-logout-btn:hover {
   background-color: #1558b3;
 }
