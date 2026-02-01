@@ -1,0 +1,85 @@
+.hero-section {
+  margin: 2rem 0;
+}
+
+.hero-container {
+  background-color: #2d3748;
+  color: white;
+  text-align: center;
+  padding: 3rem 2rem;
+  border-radius: 0.5rem;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: #a0aec0;
+  margin-bottom: 2rem;
+}
+
+.hero-search-form {
+  margin-top: 2rem;
+}
+
+.input-icon {
+  background-color: #1a202c;
+  border: 1px solid #4a5568;
+  color: white;
+}
+
+.input-icon img {
+  display: block;
+}
+
+.hero-search-form .form-control {
+  background-color: #1a202c;
+  border: 1px solid #4a5568;
+  color: white;
+}
+
+.hero-search-form .form-control::placeholder {
+  color: #718096;
+}
+
+.hero-search-form .form-control:focus {
+  background-color: #2d3748;
+  border-color: #63b3ed;
+  color: white;
+  box-shadow: 0 0 0 0.2rem rgba(99, 179, 237, 0.25);
+}
+
+.search-btn {
+  background-color: #00d4ff;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-btn:hover {
+  background-color: #00b8d4;
+  color: #000;
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-container {
+    padding: 2rem 1rem;
+  }
+}
